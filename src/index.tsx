@@ -1,4 +1,8 @@
-import { App } from './components/app';
-import { Button } from './components/button';
+// Import global styles
+import '@/styles/globals.css';
 
-export { App, Button };
+import { App } from '@/components/app';
+import { Button } from '@/components/button';
+import { cn } from '@/lib/utils';
+
+export { App, Button, cn };

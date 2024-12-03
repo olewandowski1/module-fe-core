@@ -23,7 +23,13 @@
     "noUncheckedSideEffectImports": true,
 
     /* Type checking */
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+
+    /* Paths */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "tailwind.config.ts", "core-tailwind-preset.ts"]
 }
