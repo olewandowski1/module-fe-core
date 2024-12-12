@@ -1,7 +1,12 @@
-export const App = () => {
+import { ModulesManagerInjector } from '@/providers/modules-manager-inject';
+import { ModulesManagerType } from '@/types/modules';
+
+export const App: React.FC<{ modulesManager: ModulesManagerType }> = ({
+  modulesManager,
+}) => {
   return (
-    <div className='text-yellow-500'>
-      <h1> @module App </h1>
-    </div>
+    <ModulesManagerInjector modulesManager={modulesManager}>
+      <div> @Module App </div>
+    </ModulesManagerInjector>
   );
 };
