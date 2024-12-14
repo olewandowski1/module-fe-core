@@ -58,12 +58,12 @@ The `core` module leverages modern technologies to create a robust and efficient
 
 ## How-To?
 
-1. How to modify the App theme?
+### How to modify the App theme?
 
-   - The `module-fe-core` module uses Tailwind CSS for styling. You can modify the `core-tailwind-preset.ts` file, which is distributed to all linked modules (linked to `assembly`). If you want to overwrite any value, you can do it through the `tailwind.config.ts` file.
+- The `module-fe-core` module uses Tailwind CSS for styling. You can modify the `core-tailwind-preset.ts` file, which is distributed to all linked modules (linked to `assembly`). If you want to overwrite any value, you can do it through the `tailwind.config.ts` file.
 
-2. How to create a new route?
+### How to create a new route?
 
-   - First, you need to define a **unique** path inside the `routes.ts` file (`ROUTE_PATHS` constant).
-     - **Static Routes**: You can define static routes inside the `/services/router.ts` file. **NOTE**: Defining a static route is possible only in `core` module.
-     - **Dynamic Routes**: You can export a dynamic route from the `index.tsx` file. It will be fetched from the module and initialized inside the Router.
+- First, you need to define a **unique** path inside the `routes.ts` file (`ROUTE_PATHS` constant).
+  - **Static Routes**: You can define static routes inside the `/services/router.ts` file. **NOTE**: Defining a static route is possible only in `core` module.
+  - **Dynamic Routes**: You can export a dynamic route from the `index.tsx` file. It will be fetched from the module and initialized inside the Router.
