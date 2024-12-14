@@ -23,7 +23,7 @@ const CORE_MODULE_CONFIG = {
   ] as Ref[],
   routes: [
     {
-      path: ROUTE_PATHS.SETTINGS,
+      path: ROUTE_PATHS.SETTINGS._SELF,
       component: SettingsPage,
     },
   ] as Route[],

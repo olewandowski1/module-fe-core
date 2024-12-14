@@ -1,22 +1,17 @@
+import { RootLayout } from '@/components/root-layout';
 import HomePage from '@/pages/home-page';
 import { ROUTE_PATHS } from '@/routes';
-import { createRootRoute, createRoute, Outlet } from '@tanstack/react-router';
-import { TanStackRouterDevtools } from '@tanstack/router-devtools';
+import { createRootRoute, createRoute } from '@tanstack/react-router';
 
 // Root route is the parent route for all routes in the application.
 export const rootRoute = createRootRoute({
-  component: () => (
-    <>
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
-  ),
+  component: RootLayout,
 });
 
 // Home route is the route for the home page.
 const homeRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: ROUTE_PATHS.HOME,
+  path: ROUTE_PATHS._SELF,
   component: HomePage,
 });
 
