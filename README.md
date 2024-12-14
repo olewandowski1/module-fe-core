@@ -1,50 +1,69 @@
-# React + TypeScript + Vite
+## Introduction
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The `module-fe-core` is the main dependency of the `[module-fe-assembly](https://github.com/olewandowski1/module-fe-assembly/)` module. Its aim is to provide centralized utilities and patterns for development, as well as sharing some generic components and configuration. This core module acts as the backbone for the entire application, ensuring consistency and reusability across different modules.
 
-Currently, two official plugins are available:
+### Purpose
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The primary purpose of the `core` module is to:
 
-## Expanding the ESLint configuration
+- Provide centralized utilities and development patterns.
+- Share generic components and configuration.
+- Ensure consistency and reusability across different modules.
+- Serve as the foundation for the `assembly` module.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+The `core` module leverages modern technologies to create a robust and efficient development environment:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+- Foundation: **React 19 with TypeScript**
+- Build Tool: **Vite 6**
+- Styling: **Tailwind CSS**
+- UI Library: **shadcn/ui**
+- State Management: **Zustand**
+- Routing: **Tanstack Router**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Getting Started
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/olewandowski1/module-fe-core
+   cd module-fe-core
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
+### Installing Dependencies
+
+2. Install the required dependencies:
+   ```bash
+   pnpm install
+   ```
+
+### Linking Modules for Development
+
+3. Link `core` for local development. First, create a link from the `core` package. Then, inside the `assembly` module, link it.
+
+   ```bash
+   pnpm link --global
+
+   cd ../module-fe-assembly
+   pnpm link --global @module/fe-core
+   ```
+
+### Enable HMR
+
+4. Start the Vite development server to enable Hot Module Replacement (HMR) by running the following command.
+
+   ```bash
+   pnpm start
+   ```
+
+## How-To?
+
+1. How to modify the App theme?
+
+   - The `module-fe-core` module uses Tailwind CSS for styling. You can modify the `core-tailwind-preset.ts` file, which is distributed to all linked modules (linked to `assembly`). If you want to overwrite any value, you can do it through the `tailwind.config.ts` file.
+
+2. How to create a new route?
+
+   - First, you need to define a **unique** path inside the `routes.ts` file (`ROUTE_PATHS` constant).
+     - **Static Routes**: You can define static routes inside the `/services/router.ts` file. **NOTE**: Defining a static route is possible only in `core` module.
+     - **Dynamic Routes**: You can export a dynamic route from the `index.tsx` file. It will be fetched from the module and initialized inside the Router.
