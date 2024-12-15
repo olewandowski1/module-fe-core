@@ -15,6 +15,8 @@ export type Route = {
   component: () => JSX.Element;
 };
 
+export type Translation = Record<string, Record<string, string>>;
+
 export type ModulesManagerType = {
   modules: Module[];
   refs: Ref[];
@@ -23,4 +25,10 @@ export type ModulesManagerType = {
   loadRefs: () => void;
   loadRoutes: () => void;
   getRef: (name: string) => Ref | undefined;
+};
+
+export type LocalesManagerType = {
+  translations: Translation;
+  loadTranslations: (modules: ModulesManagerType['modules']) => void;
+  formatMessage: (namespace: string, key: string) => string;
 };

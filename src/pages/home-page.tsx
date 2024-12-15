@@ -1,5 +1,7 @@
+import { formatMessage } from '@/lib/translations';
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return <div> {formatMessage('core', 'HomePage.welcome')} </div>;
 };
 
 export default HomePage;

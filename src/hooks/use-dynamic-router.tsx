@@ -11,13 +11,14 @@ import { staticRoutes } from '@/services/router';
  */
 export const useDynamicRouter = ({
   rootRoute,
-  routes,
+  modulesManager,
+  localesManager,
 }: UseDynamicRouterParams) => {
   const [router, setRouter] = useState<RouterType | null>(null);
 
   useEffect(() => {
     const initializeRouter = async () => {
-      const dynamicRoutes = routes.map((route) =>
+      const dynamicRoutes = modulesManager.routes.map((route) =>
         createRoute({
           getParentRoute: () => rootRoute,
           path: route.path,
@@ -30,13 +31,20 @@ export const useDynamicRouter = ({
         ...dynamicRoutes,
       ]);
 
-      const createdRouter = createRouter({ routeTree });
+      const createdRouter = createRouter({
+        routeTree,
+        context: {
+          modulesManager,
+          localesManager,
+        },
+        defaultPreload: 'intent',
+      });
 
       setRouter(createdRouter);
     };
 
     initializeRouter();
-  }, [rootRoute, routes]);
+  }, [rootRoute, modulesManager, localesManager]);
 
   return { router };
 };

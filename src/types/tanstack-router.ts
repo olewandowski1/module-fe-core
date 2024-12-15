@@ -1,4 +1,4 @@
-import { Route } from '@/types/modules';
+import { LocalesManagerType, ModulesManagerType } from '@/types/modules';
 import {
   AnyContext,
   RootRoute,
@@ -29,5 +29,6 @@ export type RootRouteType = RootRoute<
 
 export type UseDynamicRouterParams = {
   rootRoute: RootRouteType;
-  routes: Route[];
+  modulesManager: ModulesManagerType;
+  localesManager: LocalesManagerType;
 };

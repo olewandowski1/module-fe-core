@@ -1,0 +1,6 @@
+{
+  "core": {
+    "HomePage.welcome": "Welcome from the `fe-core` HomePage component.",
+    "SettingsPage.welcome": "Welcome from the `fe-core` SettingsPage component."
+  }
+}

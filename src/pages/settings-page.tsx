@@ -1,5 +1,7 @@
+import { formatMessage } from '@/lib/translations';
+
 const SettingsPage = () => {
-  return <div>SettingsPage</div>;
+  return <div> {formatMessage('core', 'SettingsPage.welcome')} </div>;
 };
 
 export default SettingsPage;
